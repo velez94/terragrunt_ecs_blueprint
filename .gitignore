@@ -1,0 +1,26 @@
+# Ignored vscode files
+.vscode/
+workspace
+
+# Local .terraform directories
+**/.terraform/*
+**/.terragrunt-cache/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+
+**/tfplan
+**/builds
+**/backend.tf
+**/remotebackend.tf
+**/provider.tf
+
+reports/*
+Reports/*
+
+**/terramate.tm.hcl
+
+*.cz.yaml
+/.iacpb.toml

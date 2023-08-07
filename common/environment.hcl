@@ -1,0 +1,1 @@
+locals { workspace = get_env("TF_VAR_env", "#{environment}#")  }

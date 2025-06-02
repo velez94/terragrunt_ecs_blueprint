@@ -1,0 +1,98 @@
+[template_input_parameters.project]
+template_value = "#{project}#"
+condition = "\\b[a-zA-Z]+\\b"
+description = "Project Name"
+
+[template_input_parameters.deployment_region]
+template_value = "#{deployment_region}#"
+condition = "^[a-z]{2}-[a-z]{4,10}-\\d$"
+description = "Aws Region"
+
+[template_input_parameters.backend_region]
+template_value = "#{backend_region}#"
+condition = "^[a-z]{2}-[a-z]{4,10}-\\d$"
+description = "Backend Aws Region"
+
+[template_input_parameters.backend_bucket]
+template_value = "#{backend_bucket}#"
+condition = "^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$"
+description = "Backend Bucket"
+
+[template_input_parameters.owner]
+template_value = "#{owner}#"
+condition = "\\b[a-zA-Z]+\\b"
+description = "Deployment Owner"
+
+[template_input_parameters.dynamodb_backend]
+template_value = "#{dynamodb_backend}#"
+condition = "^[a-zA-Z0-9_.-]{3,255}$"
+description = "Dynamodb for lock state"
+
+[template_input_parameters.environment]
+template_value = "#{environment}#"
+condition = "(dev|qa|stg|test|prod)"
+description = "Environment allowed values (dev|qa|stg|test|prod)"
+
+
+[template_input_parameters.deployment_profile]
+template_value = "#{deployment_profile}#"
+condition = "^[a-zA-Z0-9_.-]{3,255}$"
+description = "Deployment profile aws cli"
+
+[template_input_parameters.backend_profile]
+template_value = "#{backend_profile}#"
+condition = "^[a-zA-Z0-9_.-]{3,255}$"
+description = "Backend profile for s3 remote state"
+
+[project_structure]
+root_files = [
+    ".gitignore",
+    ".pre-commit-config.yaml",
+    "README.md",
+    "terragrunt.hcl"
+]
+ignore_folders = [
+    ".git",
+    ".terraform",
+    "Reports",
+    ".terragrunt-cache"
+]
+
+[[project_structure.folders]]
+name = "common"
+mandatory = true
+content = [
+    "common.hcl",
+    "common.tfvars",
+    "variables.tf"
+]
+[[project_structure.folders]]
+name = "docs"
+mandatory = true
+[[project_structure.folders]]
+name = "modules"
+mandatory = true
+content = [
+    "variables.tf",
+    "main.tf",
+    "outputs.tf",
+    "README.md"
+]
+[[project_structure.folders]]
+name = "resources"
+mandatory = true
+content = [
+    "main.tf",
+    "outputs.tf",
+    "parameters.tf",
+    "README.md",
+    "terragrunt.hcl",
+    "graph.svg",
+]
+[[project_structure.folders]]
+name = "img"
+mandatory = false
+[[project_structure.folders]]
+name = "test"
+mandatory = false
+# Set rule for root file
